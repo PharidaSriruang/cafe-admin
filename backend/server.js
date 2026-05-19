@@ -6,7 +6,7 @@ const db = require("./db");
 
 const app = express();
 const BASE_URL = "https://cafe-admin-3odu.onrender.com";
-
+const PORT = process.env.PORT || 5000;
 
 // ======================
 // Middleware
@@ -94,6 +94,8 @@ app.post("/upload", upload.single("image"), (req, res) => {
 // ======================
 // START SERVER
 // ======================
-app.listen(5000, () => {
-  console.log("server running on port 5000");
+
+
+app.listen(PORT, () => {
+  console.log("server running on port", PORT);
 });
