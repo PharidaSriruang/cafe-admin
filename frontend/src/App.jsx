@@ -7,6 +7,7 @@ import AddModal from "./components/AddModal";
 
 
 function App() {
+  const API = "https://cafe-admin-3odu.onrender.com";
   const headerImages = [
     "/img/bg1.jpg",
     "/img/bg2.jpg",
@@ -56,7 +57,7 @@ function App() {
   const fetchMenus = async () => {
 
     const response = await axios.get(
-      "http://localhost:5000/menu"
+      `${API}/menu`
     );
     console.log(response.data);
     setMenus(response.data);
@@ -77,23 +78,19 @@ function App() {
 
       const uploadRes =
         await axios.post(
-          "http://localhost:5000/upload",
-          formData
+          `${API}/upload`, formData
         );
 
       imageUrl =
         uploadRes.data.imageUrl;
     }
 
-    await axios.post(
-      "http://localhost:5000/menu",
-      {
-        name,
-        price,
-        image_url: imageUrl,
-        category
-      }
-    );
+    await axios.post(`${API}/menu`, {
+      name,
+      price,
+      image_url: imageUrl,
+      category
+    });
 
     fetchMenus();
 
@@ -105,7 +102,7 @@ function App() {
   const deleteMenu = async (id) => {
 
     await axios.delete(
-      `http://localhost:5000/menu/${id}`
+      `${API}/menu/${id}`
     );
 
     fetchMenus();
@@ -113,7 +110,7 @@ function App() {
   const updateMenu = async () => {
 
     await axios.put(
-      `http://localhost:5000/menu/${editingId}`,
+      `${API}/menu/${editingId}`,
       {
         name,
         price,
