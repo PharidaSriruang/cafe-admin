@@ -1,41 +1,38 @@
 function MenuCard({
-    menu,
-    deleteMenu,
-    setSelectedMenu,
-    setIsEditOpen
+  menu,
+  deleteMenu,
+  setSelectedMenu,
+  setIsEditOpen
 }) {
+  return (
+    <div className="card">
 
-    return (
-        <div className="card">
+      <img
+        src={menu.image_url}
+        alt={menu.name}
+        onError={(e) => {
+          e.target.src = "/img/placeholder.jpg";
+        }}
+      />
 
-            {/* <img
-                src={menu.image_url}
-                alt={menu.name}
-                width="150"
-            /> */}
-            <img
-                src={menu.image_url || null}
-                alt={menu.name}
-            />
-            <h3>{menu.name}</h3>
+      <h3>{menu.name}</h3>
+      <p>{menu.price} บาท</p>
 
-            <p>{menu.price} บาท</p>
-            <button
-                onClick={() => deleteMenu(menu.id)}
-            >
-                Delete
-            </button>
-            <button
-                onClick={() => {
-                    setSelectedMenu(menu);
-                    setIsEditOpen(true);
-                }}
-            >
-                Edit
-            </button>
+      <button onClick={() => deleteMenu(menu.id)}>
+        Delete
+      </button>
 
-        </div>
-    );
+      <button
+        onClick={() => {
+          setSelectedMenu(menu);
+          setIsEditOpen(true);
+        }}
+      >
+        Edit
+      </button>
+
+    </div>
+  );
 }
 
 export default MenuCard;

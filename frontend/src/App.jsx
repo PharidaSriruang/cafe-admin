@@ -4,7 +4,7 @@ import axios from "axios";
 import MenuCard from "./components/MenuCard";
 import EditModal from "./components/EditModal";
 import AddModal from "./components/AddModal";
-
+import API from "./api";
 
 function App() {
   const API = "https://cafe-admin-3odu.onrender.com";
