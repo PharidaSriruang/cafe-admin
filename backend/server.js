@@ -2,29 +2,40 @@ const express = require("express");
 const cors = require("cors");
 const multer = require("multer");
 const path = require("path");
+const fs = require("fs");
 const db = require("./db");
 
 const app = express();
+
+// ======================
+// CONFIG
+// ======================
 const BASE_URL = "https://cafe-admin-3odu.onrender.com";
 const PORT = process.env.PORT || 5000;
 
 // ======================
-// Middleware
+// CREATE uploads folder (IMPORTANT FIX)
+// ======================
+if (!fs.existsSync("uploads")) {
+  fs.mkdirSync("uploads");
+}
+
+// ======================
+// MIDDLEWARE
 // ======================
 app.use(cors());
 app.use(express.json());
 
-// static folder สำหรับรูป
-app.use("/uploads", express.static("uploads"));
+// serve static images
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // ======================
-// Upload config
+// MULTER CONFIG
 // ======================
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "uploads/");
   },
-
   filename: (req, file, cb) => {
     cb(null, Date.now() + path.extname(file.originalname));
   },
@@ -33,7 +44,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // ======================
-// ROOT (แก้ Cannot GET /)
+// ROOT CHECK
 // ======================
 app.get("/", (req, res) => {
   res.send("Cafe Admin API is running 🚀");
@@ -50,12 +61,10 @@ app.get("/menu", (req, res) => {
 app.post("/menu", (req, res) => {
   const { name, price, image_url, category } = req.body;
 
-  const stmt = db.prepare(`
+  db.prepare(`
     INSERT INTO menus (name, price, image_url, category)
     VALUES (?, ?, ?, ?)
-  `);
-
-  stmt.run(name, price, image_url, category);
+  `).run(name, price, image_url, category);
 
   res.json({ message: "menu added" });
 });
@@ -84,18 +93,19 @@ app.put("/menu/:id", (req, res) => {
 // ======================
 // UPLOAD (FIXED FOR RENDER)
 // ======================
-
 app.post("/upload", upload.single("image"), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ message: "No file uploaded" });
+  }
+
   res.json({
-    imageUrl: `${BASE_URL}/uploads/${req.file.filename}`
+    imageUrl: `${BASE_URL}/uploads/${req.file.filename}`,
   });
 });
 
 // ======================
 // START SERVER
 // ======================
-
-
 app.listen(PORT, () => {
   console.log("server running on port", PORT);
 });
