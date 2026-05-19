@@ -5,6 +5,8 @@ const path = require("path");
 const db = require("./db");
 
 const app = express();
+const BASE_URL = "https://cafe-admin-3odu.onrender.com";
+
 
 // ======================
 // Middleware
@@ -82,11 +84,10 @@ app.put("/menu/:id", (req, res) => {
 // ======================
 // UPLOAD (FIXED FOR RENDER)
 // ======================
-app.post("/upload", upload.single("image"), (req, res) => {
-  const baseUrl = process.env.BASE_URL || "http://localhost:5000";
 
+app.post("/upload", upload.single("image"), (req, res) => {
   res.json({
-    imageUrl: `${baseUrl}/uploads/${req.file.filename}`,
+    imageUrl: `${BASE_URL}/uploads/${req.file.filename}`
   });
 });
 
