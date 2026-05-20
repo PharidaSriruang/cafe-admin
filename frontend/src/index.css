@@ -215,24 +215,28 @@ button {
 
 @media (max-width: 768px) {
 
+  .hero-bg {
+    min-height: 160px;
+  }
+
   h1 {
+
     font-size: 32px;
 
     padding:
-      120px 20px 30px 20px;
-
-    min-height: 220px;
+      90px 20px 20px 20px;
 
     text-align: center;
     justify-content: center;
   }
 
   .logo {
-    width: 90px;
-    height: 90px;
+
+    width: 85px;
+    height: 85px;
 
     left: 50%;
-    top: 35px;
+    top: 30px;
 
     transform: translateX(-50%);
   }
