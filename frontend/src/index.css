@@ -12,20 +12,28 @@ body {
   position: relative;
 }
 
-h1 {
-  text-align: left;
-  margin-bottom: 30px;
-  font-size: 50px;
-  color: white;
-  padding: 60px 60px 60px 220px;
-  border-radius: 12px;
+.hero {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
   background-size: cover;
   background-position: center;
-  transition: background-image 1s ease-in-out;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
+  transition: opacity 1s ease;
+  filter: brightness(0.6);
 }
+
+h1 {
+  position: relative;
+  color: white;
+  text-align: center;
+  padding-top: 70px;
+}
+
 
 .grid {
   display: grid;

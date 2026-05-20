@@ -1,3 +1,9 @@
+const placeholders = [
+  "/img/p1.jpg",
+  "/img/p2.jpg",
+  "/img/p3.jpg",
+  "/img/p4.jpg"
+];
 function MenuCard({
   menu,
   deleteMenu,

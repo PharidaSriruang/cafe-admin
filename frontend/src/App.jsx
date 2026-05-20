@@ -149,13 +149,16 @@ function App() {
           className="logo"
         />
 
-        <h1
-          style={{
-            backgroundImage: `url(${headerImages[currentBg]})`
-          }}
-        >
-          Thammada.tmd cafe
-        </h1>
+        <div className="hero">
+          <div
+            className="bg bg1"
+            style={{
+              backgroundImage: `url(${headerImages[currentBg]})`
+            }}
+          />
+
+          <h1>Thammada.tmd cafe</h1>
+        </div>
 
       </div>
       <div className="navbar">
