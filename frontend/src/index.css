@@ -17,14 +17,24 @@ h1 {
   margin-bottom: 30px;
   font-size: 50px;
   color: white;
+
   padding: 60px 60px 60px 220px;
+
   border-radius: 12px;
+
   background-size: cover;
   background-position: center;
+
   transition: background-image 1s ease-in-out;
+
   position: relative;
   overflow: hidden;
   z-index: 1;
+
+  min-height: 180px; /* เพิ่ม */
+  
+  display: flex; /* เพิ่ม */
+  align-items: center; /* เพิ่ม */
 }
 
 
@@ -181,4 +191,30 @@ button {
   transform: translateY(-50%);
   border: 2px solid rgb(255, 255, 255);
   z-index: 10;
+}
+
+@media (max-width: 768px) {
+
+  h1 {
+    font-size: 32px;
+
+    padding:
+      120px 20px 30px 20px;
+
+    min-height: 220px;
+
+    text-align: center;
+    justify-content: center;
+  }
+
+  .logo {
+    width: 90px;
+    height: 90px;
+
+    left: 50%;
+    top: 35px;
+
+    transform: translateX(-50%);
+  }
+
 }
