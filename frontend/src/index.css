@@ -11,30 +11,50 @@ body {
 .header {
   position: relative;
 }
+.hero-bg {
 
-h1 {
-  text-align: left;
   margin-bottom: 30px;
-  font-size: 50px;
-  color: white;
-
-  padding: 60px 60px 60px 220px;
 
   border-radius: 12px;
 
   background-size: cover;
   background-position: center;
 
-  transition: background-image 1s ease-in-out;
+  min-height: 220px;
+
+  display: flex;
+  align-items: center;
 
   position: relative;
   overflow: hidden;
+
+  transition: all 1s ease-in-out;
+
+}
+.hero-bg::before {
+
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0,0,0,0.25);
+
   z-index: 1;
 
-  min-height: 180px; /* เพิ่ม */
-  
-  display: flex; /* เพิ่ม */
-  align-items: center; /* เพิ่ม */
+}
+
+h1 {
+
+  text-align: left;
+  font-size: 50px;
+  color: white;
+
+  padding: 60px 60px 60px 220px;
+
+  position: relative;
+  z-index: 2;
+
 }
 
 
