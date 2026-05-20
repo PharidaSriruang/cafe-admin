@@ -182,19 +182,3 @@ button {
   border: 2px solid rgb(255, 255, 255);
   z-index: 10;
 }
-@media (max-width: 768px) {
-
-  .logo {
-    width: 70px;
-    height: 70px;
-
-    left: 15px;
-  }
-
-  h1 {
-    font-size: 28px;
-
-    padding: 40px 20px 40px 100px;
-  }
-
-}
